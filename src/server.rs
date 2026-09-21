@@ -50,7 +50,7 @@ pub async fn run_server() -> (oneshot::Sender<()>, String) {
         .or(static_files)
         .recover(errors::handle_rejection);
 
-    let socket_addr = std::net::SocketAddr::from(([127, 0, 0, 1], port));
+    let socket_addr = std::net::SocketAddr::from(([0, 0, 0, 0], port));
     let listener = tokio::net::TcpListener::bind(socket_addr)
         .await
         .expect("failed to bind address");
